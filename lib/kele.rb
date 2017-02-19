@@ -16,12 +16,6 @@ class Kele
     p JSON.parse(response.body)
   end
 
-  # def get_mentor_availability(mentor_id)
-  #   # Charlie's mentor_id is 529277
-  #   response = self.class.get("#{@base_url}/mentors/#{mentor_id.to_s}/student_availability", { id: mentor_id, content_type: 'application/json', authorization: @auth_token } )
-  #   p JSON.parse(response.body)
-  # end
-
   def get_mentor_availability(mentor_id)
     # Charlie's mentor_id is 529277
     response = self.class.get("#{@base_url}/mentors/#{mentor_id.to_s}/student_availability", headers: { authorization: @auth_token } )
@@ -49,6 +43,19 @@ class Kele
           'stripped-text' => msg_text
           },
         headers: { authorization: @auth_token } )
+      p JSON.parse(response.body)
+  end
+
+  def create_submission(checkpoint_id, assignment_branch, assignment_commit_link, comment)
+    #
+    response = self.class.post("#{@base_url}/checkpoint_submissions", body: {
+             checkpoint_id: checkpoint_id,  # "2162"
+             assignment_branch: assignment_branch, # "Kele-ckpt-7"
+             assignment_commit_link: assignment_commit_link, # "Ckpt Submission WIP 1" commit
+             comment: comment, # "Testing Kele checkpoint commit via API"
+             enrollment_id: "2343553"
+      },
+      headers: { authorization: @auth_token} )
       p JSON.parse(response.body)
   end
 

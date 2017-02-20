@@ -52,8 +52,8 @@ class Kele
              checkpoint_id: checkpoint_id,  # "2162"
              assignment_branch: assignment_branch, # "Kele-ckpt-7"
              assignment_commit_link: assignment_commit_link, # "Ckpt Submission WIP 1" commit
-             comment: comment, # "Testing Kele checkpoint commit via API"
-             enrollment_id: "2343553"
+             comment: comment, # "Testing Kele checkpoint submission via API"
+             enrollment_id: self.get_me['id']
       },
       headers: { authorization: @auth_token} )
       p JSON.parse(response.body)
